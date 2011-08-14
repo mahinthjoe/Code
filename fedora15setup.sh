@@ -21,4 +21,5 @@ sudo yum -y install vsftpd
 sudo service vsftpd start
 sudo service vsftpd status
 sudo yum -y install --enablerepo=rawhide rubygem-rails
+sudo yum -y install p7zip p7zip-plugins unrar
 
