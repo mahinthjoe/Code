@@ -21,4 +21,8 @@ sudo service vsftpd start
 sudo service vsftpd status
 sudo yum -y install --enablerepo=rawhide rubygem-rails
 sudo yum -y install p7zip p7zip-plugins unrar
-
+sudo rpm -vhi adobe-release-i386-1.0-1.noarch.rpm
+sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
+sudo yum install -y ld-linux.so.2 gtk2-devel.i686 libdbus-glib-1.so.2 libhal.so.1 rpm-devel.i686 libXt.so.6 gnome-keyring-devel.i686 libDCOP.so.4 libxml2-devel.i686 nss-devel.i686 libxslt.i686 xterm rpm-build
+sudo yum install -y adobeair
+sudo yum install -y adobeair
