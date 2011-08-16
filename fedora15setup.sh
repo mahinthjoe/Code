@@ -17,6 +17,7 @@ mysqladmin -u root password root
 sudo chcon -R -h -t httpd_sys_content_t  /home/mahinthjoe/www
 sudo chcon -h -t httpd_sys_script_exec_t /home/mahinthjoe/www/cgi-bin
 sudo yum -y install vsftpd
+sudo chkconfig vsftpd on
 sudo service vsftpd start
 sudo service vsftpd status
 sudo yum -y install --enablerepo=rawhide rubygem-rails
