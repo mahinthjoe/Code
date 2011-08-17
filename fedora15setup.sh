@@ -14,11 +14,17 @@ sudo chkconfig mysqld on
 sudo service mysqld status
 sudo pgrep mysql
 mysqladmin -u root password root
-sudo chcon -R -h -t httpd_sys_content_t  /home/mahinthjoe/www
-sudo chcon -h -t httpd_sys_script_exec_t /home/mahinthjoe/www/cgi-bin
+sudo chcon -R -h -t httpd_sys_content_t  /home/www
+sudo chcon -h -t httpd_sys_script_exec_t /home/www/cgi-bin
 sudo yum -y install vsftpd
 sudo chkconfig vsftpd on
 sudo service vsftpd start
+sudo setsebool -P httpd_can_network_relay 1
+sudo setsebool -P allow_ypbind 1
+sudo mkdir /home/www/html/wordpress/wp-content/upgrade
+sudo chmod -R 777 /home/www/html/wordpress/wp-content/upgrade
+sudo mkdir /home/www/html/wordpress/wp-content/uploads
+sudo chmod -R 777 /home/www/html/wordpress/wp-content/uploads
 sudo service vsftpd status
 sudo yum -y install --enablerepo=rawhide rubygem-rails
 sudo yum -y install p7zip p7zip-plugins unrar
