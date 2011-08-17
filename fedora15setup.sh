@@ -3,26 +3,27 @@ sudo yum -y upgrade
 sudo rpm --import http://dnmouse.org/RPM-GPG-KEY-dnmouse
 sudo yum -y --nogpgcheck install http://dnmouse.org/autoplus-1.1-8.noarch.rpm
 sudo yum -y install httpd
+sudo mv /var/www /home/ 
 sudo useradd -g users www
-sudo mv /var/www /home/
 sudo chown -R www:users /home/www
 sudo chmod -R 755 /home/www
-
-sudo chkconfig httpd on
-sudo /etc/init.d/httpd start
-sudo pgrep httpd
 sudo yum -y install mysql mysql-server mysql-workbench
-sudo chkconfig mysqld on
-sudo service mysqld status
-sudo pgrep mysql
+sudo service mysqld start
 mysqladmin -u root password root
+sudo cp /home/mahinthjoe/code/Code/httpd.conf /etc/httpd/conf/httpd.conf
 sudo chcon -R -h -t httpd_sys_content_t  /home/www
 sudo chcon -h -t httpd_sys_script_exec_t /home/www/cgi-bin
 sudo yum -y install vsftpd
-sudo chkconfig vsftpd on
-sudo service vsftpd start
+sudo /etc/init.d/httpd start
+sudo pgrep httpd
+sudo service mysqld status
+sudo pgrep mysql
+sudo chkconfig httpd on
 sudo setsebool -P httpd_can_network_relay 1
 sudo setsebool -P allow_ypbind 1
+sudo chkconfig mysqld on
+sudo chkconfig vsftpd on
+sudo service vsftpd start
 sudo mkdir /home/www/html/wordpress/wp-content/upgrade
 sudo chmod -R 777 /home/www/html/wordpress/wp-content/upgrade
 sudo mkdir /home/www/html/wordpress/wp-content/uploads
