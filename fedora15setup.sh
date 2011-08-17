@@ -10,29 +10,46 @@ sudo chmod -R 755 /home/www
 sudo yum -y install mysql mysql-server mysql-workbench
 sudo service mysqld start
 mysqladmin -u root password root
-sudo cp /home/mahinthjoe/code/Code/httpd.conf /etc/httpd/conf/httpd.conf
-sudo chcon -R -h -t httpd_sys_content_t  /home/www
-sudo chcon -h -t httpd_sys_script_exec_t /home/www/cgi-bin
-sudo yum -y install vsftpd
+sudo yum -y install phpMyAdmin
+sudo cp -f /home/mahinthjoe/code/Code/httpd.conf /etc/httpd/conf/
 sudo /etc/init.d/httpd start
 sudo pgrep httpd
 sudo service mysqld status
 sudo pgrep mysql
-sudo chkconfig httpd on
-sudo setsebool -P httpd_can_network_relay 1
-sudo setsebool -P allow_ypbind 1
-sudo chkconfig mysqld on
-sudo chkconfig vsftpd on
-sudo service vsftpd start
+sudo yum install -y php phpMyAdmin
+
+#Permissions and SELinux Configuration
+#sudo chcon -R -h -t httpd_sys_content_t  /home/www
+#sudo chcon -h -t httpd_sys_script_exec_t /home/www/cgi-bin
+#sudo setsebool -P httpd_can_network_relay 1
+#sudo setsebool -P allow_ypbind 1
+#install wordpress/ in /home/www/html before proceding Download latest.tar.gz from wordpress.org
+sudo tar -xf latest.tar.gz -C /home/www/html/
+#edit wp-config.php in wordpress/
+sudo mv /home/www/html/wordpress/wp-config-sample.php /home/www/html/wordpress/wp-config.php
+#Set Database Username password database in wp-config.php
+sudo yum -y install vsftpd
+useradd ftpwordpress -d /home/www/html/wordpress
+passwd ftpwordpress
+sudo /etc/init.d/vsftpd start
+
+#configure vsftpd.conf Set Anonymous_Enable=NO sudo vi /etc/vsftpd/vsftpd.conf
 sudo mkdir /home/www/html/wordpress/wp-content/upgrade
 sudo chmod -R 777 /home/www/html/wordpress/wp-content/upgrade
 sudo mkdir /home/www/html/wordpress/wp-content/uploads
 sudo chmod -R 777 /home/www/html/wordpress/wp-content/uploads
-sudo service vsftpd status
-sudo yum -y install --enablerepo=rawhide rubygem-rails
+
+
+#set startup command for the below softwares at system startup
+sudo chkconfig httpd on
+sudo chkconfig mysqld on
+sudo chkconfig vsftpd on
+
+
 sudo yum -y install p7zip p7zip-plugins unrar
+sudo yum -y install --enablerepo=rawhide rubygem-rails
+
 sudo rpm -vhi adobe-release-i386-1.0-1.noarch.rpm
 sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
 sudo yum install -y ld-linux.so.2 gtk2-devel.i686 libdbus-glib-1.so.2 libhal.so.1 rpm-devel.i686 libXt.so.6 gnome-keyring-devel.i686 libDCOP.so.4 libxml2-devel.i686 nss-devel.i686 libxslt.i686 xterm rpm-build
-sudo yum install -y adobeair
-sudo yum install -y adobeair
+
