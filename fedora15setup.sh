@@ -24,7 +24,7 @@ git config --global user.name "Mahinth Christensen"
 git config --global user.email "mahinthjoe@gmail.com"
 git config --global github.user mahinthjoe
 git config --global github.token 08ea2faac8bfb116f9e98a6cd7d895f5
-
+sudo setsebool -P allow_ftpd_full_access 1 #to allow SELinux access by vsftpd to home directory
 #set startup command for the installed softwares at system startup
 sudo chkconfig httpd on
 sudo chkconfig mysqld on
