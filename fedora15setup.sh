@@ -18,6 +18,8 @@ sudo service mysqld status
 sudo pgrep mysql
 sudo yum install -y php phpMyAdmin
 sudo yum  install git-core git-gui git-doc
+ssh-keygen -t rsa -C "mahinthjoe@gmail.com"
+
 #set startup command for the installed softwares at system startup
 sudo chkconfig httpd on
 sudo chkconfig mysqld on
