@@ -17,6 +17,11 @@ sudo pgrep httpd
 sudo service mysqld status
 sudo pgrep mysql
 sudo yum install -y php phpMyAdmin
+sudo yum  install git-core git-gui git-doc
+#set startup command for the installed softwares at system startup
+sudo chkconfig httpd on
+sudo chkconfig mysqld on
+sudo chkconfig vsftpd on
 
 #Permissions and SELinux Configuration
 #sudo chcon -R -h -t httpd_sys_content_t  /home/www
@@ -40,10 +45,6 @@ sudo mkdir /home/www/html/wordpress/wp-content/uploads
 sudo chmod -R 777 /home/www/html/wordpress/wp-content/uploads
 
 
-#set startup command for the below softwares at system startup
-sudo chkconfig httpd on
-sudo chkconfig mysqld on
-sudo chkconfig vsftpd on
 
 
 sudo yum -y install p7zip p7zip-plugins unrar
