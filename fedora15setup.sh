@@ -44,7 +44,9 @@ sudo yum -y install vsftpd
 useradd ftpwordpress -d /home/www/html/wordpress
 passwd ftpwordpress
 sudo /etc/init.d/vsftpd start
-
+#SELinux enable write to .htaccess by httpd process
+sudo emanage fcontext -a -t httpd_sys_rw_content_t '.htaccess'
+sudo restorecon -v '.htaccess'
 #configure vsftpd.conf Set Anonymous_Enable=NO sudo vi /etc/vsftpd/vsftpd.conf
 sudo mkdir /home/www/html/wordpress/wp-content/upgrade
 sudo chmod -R 777 /home/www/html/wordpress/wp-content/upgrade
