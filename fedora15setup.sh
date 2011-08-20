@@ -25,6 +25,7 @@ git config --global user.email "mahinthjoe@gmail.com"
 git config --global github.user mahinthjoe
 git config --global github.token 08ea2faac8bfb116f9e98a6cd7d895f5
 sudo setsebool -P allow_ftpd_full_access 1 #to allow SELinux access by vsftpd to home directory
+sudo yum -y install ant-contrib #Install required for HTML5 BoilerPlate Build Script
 #set startup command for the installed softwares at system startup
 sudo chkconfig httpd on
 sudo chkconfig mysqld on
@@ -47,6 +48,7 @@ sudo /etc/init.d/vsftpd start
 #SELinux enable write to .htaccess by httpd process
 sudo emanage fcontext -a -t httpd_sys_rw_content_t '.htaccess'
 sudo restorecon -v '.htaccess'
+sudo setsebool -P allow_ypbind 1 #enable wordpress update via Wordpress Control Panel ftp
 #configure vsftpd.conf Set Anonymous_Enable=NO sudo vi /etc/vsftpd/vsftpd.conf
 sudo mkdir /home/www/html/wordpress/wp-content/upgrade
 sudo chmod -R 777 /home/www/html/wordpress/wp-content/upgrade
