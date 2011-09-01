@@ -2,7 +2,15 @@ sudo yum -y upgrade
 sudo yum -y install yum-fastestmirror
 sudo rpm --import http://dnmouse.org/RPM-GPG-KEY-dnmouse
 yum -y --nogpgcheck install http://dnmouse.org/autoplus-1.2-2.noarch.rpm
-sudo yum -y install mysql mysql-server mysql-workbench
+sudo yum -y install mysql mysql-server mysql-workbench phpMyAdmin
+sudo yum  install git-core git-gui git-doc
+ssh-keygen -t rsa -C "mahinthjoe@gmail.com"
+#Github.com Configuration
+git config --global user.name "Mahinth Christensen"
+git config --global user.email "mahinthjoe@gmail.com"
+git config --global github.user mahinthjoe
+git config --global github.token 08ea2faac8bfb116f9e98a6cd7d895f5
+
 sudo service mysqld start
 mysqladmin -u root password root
 sudo yum -y install phpMyAdmin
@@ -16,14 +24,8 @@ sudo /etc/init.d/httpd start
 sudo pgrep httpd
 sudo service mysqld status
 sudo pgrep mysql
-sudo yum install -y php phpMyAdmin
-sudo yum  install git-core git-gui git-doc
-ssh-keygen -t rsa -C "mahinthjoe@gmail.com"
-#Github.com Configuration
-git config --global user.name "Mahinth Christensen"
-git config --global user.email "mahinthjoe@gmail.com"
-git config --global github.user mahinthjoe
-git config --global github.token 08ea2faac8bfb116f9e98a6cd7d895f5
+
+
 sudo setsebool -P allow_ftpd_full_access 1 #to allow SELinux access by vsftpd to home directory
 sudo yum -y install ant-contrib #Install required for HTML5 BoilerPlate Build Script
 #set startup command for the installed softwares at system startup
