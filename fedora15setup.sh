@@ -3,7 +3,7 @@ sudo yum -y install yum-fastestmirror
 sudo rpm --import http://dnmouse.org/RPM-GPG-KEY-dnmouse
 yum -y --nogpgcheck install http://dnmouse.org/autoplus-1.2-2.noarch.rpm
 sudo yum -y install mysql mysql-server mysql-workbench phpMyAdmin
-sudo yum  install git-core git-gui git-doc
+sudo yum  -y install git-core git-gui git-doc
 ssh-keygen -t rsa -C "mahinthjoe@gmail.com"
 #Github.com Configuration
 git config --global user.name "Mahinth Christensen"
