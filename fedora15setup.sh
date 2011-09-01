@@ -1,7 +1,7 @@
 sudo yum -y upgrade
 sudo yum -y install yum-fastestmirror
 sudo rpm --import http://dnmouse.org/RPM-GPG-KEY-dnmouse
-sudo yum -y --nogpgcheck install http://dnmouse.org/autoplus-1.1-8.noarch.rpm
+yum -y --nogpgcheck install http://dnmouse.org/autoplus-1.2-2.noarch.rpm
 sudo yum -y install mysql mysql-server mysql-workbench
 sudo service mysqld start
 mysqladmin -u root password root
