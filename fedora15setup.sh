@@ -1,16 +1,16 @@
-sudo yum -y install yum-fastestmirror
 sudo yum -y upgrade
+sudo yum -y install yum-fastestmirror
 sudo rpm --import http://dnmouse.org/RPM-GPG-KEY-dnmouse
 sudo yum -y --nogpgcheck install http://dnmouse.org/autoplus-1.1-8.noarch.rpm
+sudo yum -y install mysql mysql-server mysql-workbench
+sudo service mysqld start
+mysqladmin -u root password root
+sudo yum -y install phpMyAdmin
 sudo yum -y install httpd
 sudo mv /var/www /home/ 
 sudo useradd -g users www
 sudo chown -R www:users /home/www
 sudo chmod -R 755 /home/www
-sudo yum -y install mysql mysql-server mysql-workbench
-sudo service mysqld start
-mysqladmin -u root password root
-sudo yum -y install phpMyAdmin
 sudo cp -f /home/mahinthjoe/code/Code/httpd.conf /etc/httpd/conf/
 sudo /etc/init.d/httpd start
 sudo pgrep httpd
