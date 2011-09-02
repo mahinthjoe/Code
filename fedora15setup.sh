@@ -45,7 +45,9 @@ sudo mkdir /home/www/html/wordpress/wp-content/upgrade
 sudo chmod -R 777 /home/www/html/wordpress/wp-content/upgrade
 sudo mkdir /home/www/html/wordpress/wp-content/uploads
 sudo chmod -R 777 /home/www/html/wordpress/wp-content/uploads
-sudo chmod -R 777 /home/www/html/wordpress/wp-content/themes //Required for theme install etc
+sudo chmod -R 777 /home/www/html/wordpress/wp-content/themes //Required for theme install via wp control panel
+sudo chown apache:apache /home/www/html/wordpress/wp-content/uploads //Required for plugin install via wp controlpanel
+
 #Permissions and SELinux Configuration
 #sudo chcon -R -h -t httpd_sys_content_t  /home/www
 #sudo chcon -h -t httpd_sys_script_exec_t /home/www/cgi-bin
