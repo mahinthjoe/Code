@@ -1,9 +1,11 @@
 sudo yum -y upgrade
 sudo yum -y install yum-fastestmirror
 sudo rpm --import http://dnmouse.org/RPM-GPG-KEY-dnmouse
-yum -y --nogpgcheck install http://dnmouse.org/autoplus-1.2-2.noarch.rpm
-sudo yum -y install mysql mysql-server mysql-workbench phpMyAdmin
-sudo yum  -y install git-core git-gui git-doc
+yum -y --nogpgcheck install http://dnmouse.org/autoplus-1.2-2.noarch.rpm //Install Autoten
+sudo yum -y install mysql mysql-server mysql-workbench phpMyAdmin //Install mysql php perl etc 
+sudo yum  -y install git-core git-gui git-doc //git install
+sudo yum -y install httpd //Apache Install
+sudo yum -y install ant-contrib #Install required for HTML5 BoilerPlate Build Script 
 ssh-keygen -t rsa -C "mahinthjoe@gmail.com"
 #Github.com Configuration
 git config --global user.name "Mahinth Christensen"
@@ -11,23 +13,25 @@ git config --global user.email "mahinthjoe@gmail.com"
 git config --global github.user mahinthjoe
 git config --global github.token 08ea2faac8bfb116f9e98a6cd7d895f5
 
+//mysql configuration
 sudo service mysqld start
-mysqladmin -u root password root
-sudo yum -y install phpMyAdmin
-sudo yum -y install httpd
+sudo mysqladmin -u root password root
+
+//Apache Configuration
 sudo mv /var/www /home/ 
 sudo useradd -g users www
 sudo chown -R www:users /home/www
 sudo chmod -R 755 /home/www
+
 sudo cp -f /home/mahinthjoe/code/Code/httpd.conf /etc/httpd/conf/
-sudo /etc/init.d/httpd start
+sudo /etc/init.d/httpd start 
 sudo pgrep httpd
 sudo service mysqld status
 sudo pgrep mysql
 
 
 sudo setsebool -P allow_ftpd_full_access 1 #to allow SELinux access by vsftpd to home directory
-sudo yum -y install ant-contrib #Install required for HTML5 BoilerPlate Build Script
+
 #set startup command for the installed softwares at system startup
 sudo chkconfig httpd on
 sudo chkconfig mysqld on
