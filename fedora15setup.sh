@@ -57,7 +57,8 @@ sudo chown apache:apache /home/www/html/wordpress/wp-content/uploads //Required 
 sudo emanage fcontext -a -t httpd_sys_rw_content_t '.htaccess'
 sudo restorecon -v '.htaccess'
 sudo setsebool -P allow_ypbind 1 #enable wordpress update via Wordpress Control Panel ftp
-
+semanage fcontext -a -t httpd_sys_rw_content_t '/home/www/html/wordpress/wp-content/uploads/2011/09' //To have httpd write access on specified directory
+restorecon -v '/home/www/html/wordpress/wp-content/uploads/2011/09' //for httpd to have write access 
 sudo rpm -vhi adobe-release-i386-1.0-1.noarch.rpm
 sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
 sudo yum install -y ld-linux.so.2 gtk2-devel.i686 libdbus-glib-1.so.2 libhal.so.1 rpm-devel.i686 libXt.so.6 gnome-keyring-devel.i686 libDCOP.so.4 libxml2-devel.i686 nss-devel.i686 libxslt.i686 xterm rpm-build
