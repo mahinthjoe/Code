@@ -7,6 +7,9 @@
   sudo yum -y install httpd //Apache Install
 #mysql
   sudo yum -y install mysql mysql-server mysql-workbench 
+  //mysql configuration
+  sudo service mysqld start
+  sudo mysqladmin -u root password root
 #php
   sudo yum -y istall phpMyAdmin 
 #various sw
@@ -21,9 +24,6 @@
   git config --global user.email "mahinthjoe@gmail.com"
   git config --global github.user mahinthjoe
   git config --global github.token 08ea2faac8bfb116f9e98a6cd7d895f5
-//mysql configuration
-sudo service mysqld start
-sudo mysqladmin -u root password root
 //Apache Configuration
 sudo mv /var/www /home/ 
 sudo useradd -g users www
