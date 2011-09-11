@@ -13,7 +13,7 @@
   sudo service mysqld start
   sudo mysqladmin -u root password root
 #php
-  sudo yum -y istall phpMyAdmin 
+  sudo yum -y install phpMyAdmin 
 #various sw
   sudo yum -y install p7zip p7zip-plugins unrar ant-contrib #Install required for HTML5 BoilerPlate ant build Script 
 #generate ssh public key for github
