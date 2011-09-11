@@ -1,7 +1,7 @@
 sudo yum -y upgrade
 sudo yum -y install yum-fastestmirror
 sudo rpm --import http://dnmouse.org/RPM-GPG-KEY-dnmouse
-yum -y --nogpgcheck install http://dnmouse.org/autoplus-1.2-2.noarch.rpm //Install Autoten
+sudo yum -y --nogpgcheck install http://dnmouse.org/autoplus-1.2-2.noarch.rpm //Install Autoten
 sudo yum -y install mysql mysql-server mysql-workbench phpMyAdmin //Install mysql php perl etc 
 sudo yum -y install httpd //Apache Install
 sudo yum -y install p7zip p7zip-plugins unrar
