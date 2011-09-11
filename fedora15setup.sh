@@ -5,6 +5,8 @@
   sudo yum -y --nogpgcheck install http://dnmouse.org/autoplus-1.2-2.noarch.rpm //Install Autoten
 #apache
   sudo yum -y install httpd //Apache Install
+  sudo /etc/init.d/httpd start //Start Apache 
+  sudo pgrep httpd 
 #mysql
   sudo yum -y install mysql mysql-server mysql-workbench 
   //mysql configuration
@@ -30,8 +32,7 @@ sudo useradd -g users www
 sudo chown -R www:users /home/www
 sudo chmod -R 755 /home/www
 #sudo cp -f /home/mahinthjoe/code/Code/httpd.conf /etc/httpd/conf/
-sudo /etc/init.d/httpd start //Start Apache 
-sudo pgrep httpd 
+
 sudo service mysqld status
 sudo pgrep mysql
 sudo yum -y install vsftpd
