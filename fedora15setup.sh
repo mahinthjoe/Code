@@ -1,12 +1,19 @@
-sudo yum -y upgrade
-sudo yum -y install yum-fastestmirror
-sudo rpm --import http://dnmouse.org/RPM-GPG-KEY-dnmouse
-sudo yum -y --nogpgcheck install http://dnmouse.org/autoplus-1.2-2.noarch.rpm //Install Autoten
-sudo yum -y install mysql mysql-server mysql-workbench phpMyAdmin //Install mysql php perl etc 
-sudo yum -y install httpd //Apache Install
-sudo yum -y install p7zip p7zip-plugins unrar
-sudo yum -y install ant-contrib #Install required for HTML5 BoilerPlate Build Script 
-ssh-keygen -t rsa -C "mahinthjoe@gmail.com"
+#linux 
+  sudo yum -y upgrade
+  sudo yum -y install yum-fastestmirror
+  sudo rpm --import http://dnmouse.org/RPM-GPG-KEY-dnmouse
+  sudo yum -y --nogpgcheck install http://dnmouse.org/autoplus-1.2-2.noarch.rpm //Install Autoten
+#apache
+  sudo yum -y install httpd //Apache Install
+#mysql
+  sudo yum -y install mysql mysql-server mysql-workbench 
+#php
+  sudo yum -y istall phpMyAdmin 
+#various sw
+  sudo yum -y install p7zip p7zip-plugins unrar
+  sudo yum -y install ant-contrib #Install required for HTML5 BoilerPlate Build Script 
+#generate ssh public key for github
+  ssh-keygen -t rsa -C "mahinthjoe@gmail.com"
 #github install
   sudo yum  -y install git-core git-gui git-doc //git install
 #Github.com Configuration
@@ -14,7 +21,6 @@ ssh-keygen -t rsa -C "mahinthjoe@gmail.com"
   git config --global user.email "mahinthjoe@gmail.com"
   git config --global github.user mahinthjoe
   git config --global github.token 08ea2faac8bfb116f9e98a6cd7d895f5
-
 //mysql configuration
 sudo service mysqld start
 sudo mysqladmin -u root password root
