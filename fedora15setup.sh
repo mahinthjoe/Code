@@ -25,16 +25,13 @@
   git config --global user.email "mahinthjoe@gmail.com"
   git config --global github.user mahinthjoe
   git config --global github.token 08ea2faac8bfb116f9e98a6cd7d895f5
-
-//Apache Configuration
-sudo mv /var/www /home/ 
-sudo useradd -g users www
-sudo chown -R www:users /home/www
-sudo chmod -R 755 /home/www
-#sudo cp -f /home/mahinthjoe/code/Code/httpd.conf /etc/httpd/conf/
-
-sudo service mysqld status
-sudo pgrep mysql
+#Apache Configuration
+  #sudo mv /var/www /home/ 
+  #or sudo mv /media/Joe/backup/mahinthjoe/www /home/ //If flash is connecter
+  sudo useradd -g users www
+  sudo chown -R www:users /home/www
+  sudo chmod -R 755 /home/www
+  #sudo cp -f /media/Joe/backup/mahinthjoe/code/Code/httpd.conf /etc/httpd/conf/
 sudo yum -y install vsftpd
 sudo useradd ftpwordpress -d /home/www/html/wordpress
 sudo passwd ftpwordpress
