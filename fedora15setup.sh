@@ -36,11 +36,6 @@ sudo yum -y install vsftpd
 sudo useradd ftpwordpress -d /home/www/html/wordpress
 sudo passwd ftpwordpress
 sudo /etc/init.d/vsftpd start
-sudo setsebool -P allow_ftpd_full_access 1 #to allow SELinux access by vsftpd to home directory
-#set startup command for the installed softwares at system startup
-sudo chkconfig httpd on
-sudo chkconfig mysqld on
-sudo chkconfig vsftpd on
 #install wordpress/ in /home/www/html before proceding Download latest.tar.gz from wordpress.org
 sudo tar -xf latest.tar.gz -C /home/www/html/
 #edit wp-config.php in wordpress/
@@ -53,8 +48,13 @@ sudo mkdir /home/www/html/wordpress/wp-content/uploads
 sudo chmod -R 777 /home/www/html/wordpress/wp-content/uploads
 sudo chmod -R 777 /home/www/html/wordpress/wp-content/themes //Required for theme install via wp control panel
 sudo chown apache:apache /home/www/html/wordpress/wp-content/uploads //Required for plugin install via wp controlpanel
+#set startup command for the installed softwares at system startup
+sudo chkconfig httpd on
+sudo chkconfig mysqld on
+sudo chkconfig vsftpd on
 
 #Permissions and SELinux Configuration
+sudo setsebool -P allow_ftpd_full_access 1 #to allow SELinux access by vsftpd to home directory
 #sudo chcon -R -h -t httpd_sys_content_t  /home/www
 #sudo chcon -h -t httpd_sys_script_exec_t /home/www/cgi-bin
 #sudo setsebool -P httpd_can_network_relay 1
