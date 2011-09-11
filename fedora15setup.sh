@@ -15,8 +15,7 @@
 #php
   sudo yum -y istall phpMyAdmin 
 #various sw
-  sudo yum -y install p7zip p7zip-plugins unrar
-  sudo yum -y install ant-contrib #Install required for HTML5 BoilerPlate Build Script 
+  sudo yum -y install p7zip p7zip-plugins unrar ant-contrib #Install required for HTML5 BoilerPlate ant build Script 
 #generate ssh public key for github
   ssh-keygen -t rsa -C "mahinthjoe@gmail.com"
 #github install
@@ -26,6 +25,7 @@
   git config --global user.email "mahinthjoe@gmail.com"
   git config --global github.user mahinthjoe
   git config --global github.token 08ea2faac8bfb116f9e98a6cd7d895f5
+
 //Apache Configuration
 sudo mv /var/www /home/ 
 sudo useradd -g users www
