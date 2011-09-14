@@ -2,20 +2,24 @@
   sudo yum -y upgrade
   sudo yum -y install yum-fastestmirror
   sudo rpm --import http://dnmouse.org/RPM-GPG-KEY-dnmouse
-  sudo yum -y --nogpgcheck install http://dnmouse.org/autoplus-1.2-2.noarch.rpm //Install Autoten
+  sudo yum -y --nogpgcheck install http://dnmouse.org/autoplus-1.2-2.noarch.rpm
+  //Add Google Repository
+  wget https://dl-ssl.google.com/linux/linux_signing_key.pub
+  sudo rpm --import linux_signing_key.pub  
+
+
+ //Install Autoten
 #apache
   sudo yum -y install httpd //Apache Install
   sudo /etc/init.d/httpd start //Start Apache 
   sudo pgrep httpd 
+  sudo chkconfig httpd on //set startup command for the installed softwares at system startup
+
 #mysql
-  sudo yum -y install mysql mysql-server mysql-workbench 
-  //mysql configuration
+  sudo yum -y install mysql mysql-server mysql-workbench phpMyAdmin p7zip p7zip-plugins unrar ant-contrib   #mysql configuration
   sudo service mysqld start
   sudo mysqladmin -u root password root
-#php
-  sudo yum -y install phpMyAdmin 
-#various sw
-  sudo yum -y install p7zip p7zip-plugins unrar ant-contrib #Install required for HTML5 BoilerPlate ant build Script 
+  sudo chkconfig mysqld on //Set mysqld to be started on restart
 ./githubSetup.sh
 #Apache Configuration
   #sudo mv /var/www /home/ 
@@ -23,6 +27,7 @@
   sudo useradd -g users www
   sudo chown -R www:users /home/www
   sudo chmod -R 755 /home/www
+  #sudo cp -f ~/code/Code/httpd.conf /etc/httpd/conf
   #sudo cp -f /media/Joe/backup/mahinthjoe/code/Code/httpd.conf /etc/httpd/conf/
 sudo yum -y install vsftpd
 sudo useradd ftpwordpress -d /home/www/html/wordpress
@@ -41,10 +46,7 @@ sudo chmod -R 777 /home/www/html/wordpress/wp-content/uploads
 sudo chmod -R 777 /home/www/html/wordpress/wp-content/themes //Required for theme install via wp control panel
 sudo chown apache:apache /home/www/html/wordpress/wp-content/uploads //Required for plugin install via wp controlpanel
 #set startup command for the installed softwares at system startup
-sudo chkconfig httpd on
-sudo chkconfig mysqld on
 sudo chkconfig vsftpd on
-
 #Permissions and SELinux Configuration
 sudo setsebool -P allow_ftpd_full_access 1 #to allow SELinux access by vsftpd to home directory
 #sudo chcon -R -h -t httpd_sys_content_t  /home/www
