@@ -48,6 +48,7 @@ sudo chown apache:apache /home/www/html/wordpress/wp-content/uploads //Required 
 #set startup command for the installed softwares at system startup
 sudo chkconfig vsftpd on
 #Permissions and SELinux Configuration
+#semanage fcontext -a -t httpd_sys_content_t "/html(/.*)?"//to add a file context of type httpd_sys_content_t for everything under /html.  
 sudo setsebool -P allow_ftpd_full_access 1 #to allow SELinux access by vsftpd to home directory
 #sudo chcon -R -h -t httpd_sys_content_t  /home/www
 #sudo chcon -h -t httpd_sys_script_exec_t /home/www/cgi-bin
