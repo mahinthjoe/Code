@@ -6,17 +6,14 @@
   //Add Google Repository
   wget https://dl-ssl.google.com/linux/linux_signing_key.pub
   sudo rpm --import linux_signing_key.pub  
-
-
- //Install Autoten
 #apache
   sudo yum -y install httpd //Apache Install
   sudo /etc/init.d/httpd start //Start Apache 
   sudo pgrep httpd 
   sudo chkconfig httpd on //set startup command for the installed softwares at system startup
-
 #mysql
-  sudo yum -y install mysql mysql-server mysql-workbench phpMyAdmin p7zip p7zip-plugins unrar ant-contrib   #mysql configuration
+  sudo yum -y install mysql mysql-server mysql-workbench phpMyAdmin p7zip p7zip-plugins unrar ant-contrib  
+  #mysql configuration
   sudo service mysqld start
   sudo mysqladmin -u root password root
   sudo chkconfig mysqld on //Set mysqld to be started on restart
@@ -29,27 +26,35 @@
   sudo chmod -R 755 /home/www
   #sudo cp -f ~/code/Code/httpd.conf /etc/httpd/conf
   #sudo cp -f /media/Joe/backup/mahinthjoe/code/Code/httpd.conf /etc/httpd/conf/
-sudo yum -y install vsftpd
-sudo useradd ftpwordpress -d /home/www/html/wordpress
-sudo passwd ftpwordpress
-sudo /etc/init.d/vsftpd start
+#Install Very Secure FTP & configure
+ sudo yum -y install vsftpd
+ sudo useradd ftpwordpress -d /home/www/html/wordpress
+ sudo passwd ftpwordpress
+ sudo vi /etc/vsftpd/vsftpd.conf #configure vsftpd.conf Set Anonymous_Enable=NO
+ sudo /etc/init.d/vsftpd start
+ sudo chkconfig vsftpd on
+ sudo setsebool -P allow_ftpd_full_access 1 #to allow SELinux access by vsftpd to home directory
+
 #install wordpress/ in /home/www/html before proceding Download latest.tar.gz from wordpress.org
-sudo tar -xf latest.tar.gz -C /home/www/html/
+#sudo tar -xf latest.tar.gz -C /home/www/html/
 #edit wp-config.php in wordpress/
-sudo mv /home/www/html/wordpress/wp-config-sample.php /home/www/html/wordpress/wp-config.php
+#sudo mv /home/www/html/wordpress/wp-config-sample.php /home/www/html/wordpress/wp-config.php
 #Set Database Username password database in wp-config.php
-#configure vsftpd.conf Set Anonymous_Enable=NO sudo vi /etc/vsftpd/vsftpd.conf
-sudo mkdir /home/www/html/wordpress/wp-content/upgrade
-sudo chmod -R 777 /home/www/html/wordpress/wp-content/upgrade
-sudo mkdir /home/www/html/wordpress/wp-content/uploads
-sudo chmod -R 777 /home/www/html/wordpress/wp-content/uploads
-sudo chmod -R 777 /home/www/html/wordpress/wp-content/themes //Required for theme install via wp control panel
-sudo chown apache:apache /home/www/html/wordpress/wp-content/uploads //Required for plugin install via wp controlpanel
-#set startup command for the installed softwares at system startup
-sudo chkconfig vsftpd on
+
+ sudo mkdir /home/www/html/meltronicsgroup/wp-content/upgrade
+ sudo mkdir /home/www/html/meltronicsgroup/wp-content/uploads
+ 
+//Required for theme & plugin install via wordpress controlpanel
+ sudo chmod -R 777 /home/www/html/meltronicsgroup/wp-content/upgrade
+ sudo chmod -R 777 /home/www/html/meltronicsgroup/wp-content/uploads
+ sudo chmod -R 777 /home/www/html/meltronicsgroup/wp-content/themes 
+ sudo chown apache:apache /home/www/html/meltronicsgroup/wp-content/themes 
+ sudo chown apache:apache /home/www/html/meltronicsgroup/wp-content/uploads
+ sudo chown apache:apache /home/www/html/meltronicsgroup/wp-content/upgrade
+
 #Permissions and SELinux Configuration
-#semanage fcontext -a -t httpd_sys_content_t "/html(/.*)?"//to add a file context of type httpd_sys_content_t for everything under /html.  
-sudo setsebool -P allow_ftpd_full_access 1 #to allow SELinux access by vsftpd to home directory
+#semanage fcontext -a -t httpd_sys_content_t "/home/www/html(/.*)?"//to add a file context of type httpd_sys_content_t for everything under /home/www/html.  
+
 #sudo chcon -R -h -t httpd_sys_content_t  /home/www
 #sudo chcon -h -t httpd_sys_script_exec_t /home/www/cgi-bin
 #sudo setsebool -P httpd_can_network_relay 1
