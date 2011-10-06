@@ -61,7 +61,7 @@
 
 #Permissions and SELinux Configuration
 #semanage fcontext -a -t httpd_sys_content_t "/home/www/html(/.*)?"//to add a file context of type httpd_sys_content_t for everything under /home/www/html.  
-
+chcon -t execmem_exec_t '/opt/Adobe/Reader9/Reader/intellinux/bin/acroread' // To correct chcon -t execmem_exec_t '/opt/Adobe/Reader9/Reader/intellinux/bin/acroread' making program stack executable
 #sudo chcon -R -h -t httpd_sys_content_t  /home/www
 #sudo chcon -h -t httpd_sys_script_exec_t /home/www/cgi-bin
 #sudo setsebool -P httpd_can_network_relay 1
