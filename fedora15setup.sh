@@ -6,6 +6,13 @@
   //Add Google Repository
   wget https://dl-ssl.google.com/linux/linux_signing_key.pub
   sudo rpm --import linux_signing_key.pub  
+  // Add Adobe Repository to yum
+  rpm -ivh http://linuxdownload.adobe.com/adobe-release/adobe-release-i386-1.0-1.noarch.rpm
+  rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
+  ## English version ##
+  yum install nspluginwrapper.i686 AdobeReader_enu
+  ## Check other language versions with following command ##
+  yum list AdobeReader*
 #apache
   sudo yum -y install httpd //Apache Install
   sudo /etc/init.d/httpd start //Start Apache 
