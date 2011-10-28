@@ -6,6 +6,13 @@
   //Add Google Repository
   wget https://dl-ssl.google.com/linux/linux_signing_key.pub
   sudo rpm --import linux_signing_key.pub  
+  // Add Adobe Repository to yum
+  rpm -ivh http://linuxdownload.adobe.com/adobe-release/adobe-release-i386-1.0-1.noarch.rpm
+  rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
+  ## English version ##
+  yum install nspluginwrapper.i686 AdobeReader_enu
+  ## Check other language versions with following command ##
+  yum list AdobeReader*
 #apache
   sudo yum -y install httpd //Apache Install
   sudo /etc/init.d/httpd start //Start Apache 
@@ -56,7 +63,7 @@ sudo yum install -y gcc-c++ patch readline readline-devel zlib zlib-devel libyam
 
 #Permissions and SELinux Configuration
 #semanage fcontext -a -t httpd_sys_content_t "/home/www/html(/.*)?"//to add a file context of type httpd_sys_content_t for everything under /home/www/html.  
-
+chcon -t execmem_exec_t '/opt/Adobe/Reader9/Reader/intellinux/bin/acroread' // To correct chcon -t execmem_exec_t '/opt/Adobe/Reader9/Reader/intellinux/bin/acroread' making program stack executable
 #sudo chcon -R -h -t httpd_sys_content_t  /home/www
 #sudo chcon -h -t httpd_sys_script_exec_t /home/www/cgi-bin
 #sudo setsebool -P httpd_can_network_relay 1
