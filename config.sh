@@ -33,12 +33,12 @@
  sudo mkdir /home/www/html/meltronicsgroup/wp-content/uploads
  
 //Required for theme & plugin install via wordpress controlpanel
- sudo chmod -R 777 /home/www/html/meltronicsgroup/wp-content/upgrade
- sudo chmod -R 777 /home/www/html/meltronicsgroup/wp-content/uploads
- sudo chmod -R 777 /home/www/html/meltronicsgroup/wp-content/themes 
- sudo chown apache:apache /home/www/html/meltronicsgroup/wp-content/themes 
- sudo chown apache:apache /home/www/html/meltronicsgroup/wp-content/uploads
- sudo chown apache:apache /home/www/html/meltronicsgroup/wp-content/upgrade
+ sudo chmod -R 777 /home/www/html/wordpress/wp-content/upgrade
+ sudo chmod -R 777 /home/www/html/wordpress/wp-content/uploads
+ sudo chmod -R 777 /home/www/html/wordpress/wp-content/themes 
+ sudo chown apache:apache /home/www/html/wordpress/wp-content/themes 
+ sudo chown apache:apache /home/www/html/wordpress/wp-content/uploads
+ sudo chown apache:apache /home/www/html/wordpress/wp-content/upgrade
 
 #Permissions and SELinux Configuration
 #semanage fcontext -a -t httpd_sys_content_t "/home/www/html(/.*)?"//to add a file context of type httpd_sys_content_t for everything under /home/www/html.  

@@ -18,18 +18,19 @@
   sudo mysqladmin -u root password root
   sudo chkconfig mysqld on //Set mysqld to be started on restart
 ./githubSetup.sh
-#Apache Configuration
-  #sudo mv /var/www /home/ 
-  #or sudo mv /media/Joe/backup/mahinthjoe/www /home/ //If flash is connecter
+#User Configuration
   sudo useradd -g users www
   sudo chown -R www:users /home/www
   sudo chmod -R 755 /home/www
-  #sudo cp -f ~/code/Code/httpd.conf /etc/httpd/conf
+  sudo yum -y install vsftpd
+  sudo useradd ftpwordpress -d /home/www/html/wordpress
+  sudo passwd ftpwordpress
+#install RVM
+sudo bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
+sudo yum install -y gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel
+#sudo cp -f ~/code/Code/httpd.conf /etc/httpd/conf
   #sudo cp -f /media/Joe/backup/mahinthjoe/code/Code/httpd.conf /etc/httpd/conf/
 #Install Very Secure FTP & configure
- sudo yum -y install vsftpd
- sudo useradd ftpwordpress -d /home/www/html/wordpress
- sudo passwd ftpwordpress
  sudo vi /etc/vsftpd/vsftpd.conf #configure vsftpd.conf Set Anonymous_Enable=NO
  sudo /etc/init.d/vsftpd start
  sudo chkconfig vsftpd on
@@ -45,12 +46,13 @@
  sudo mkdir /home/www/html/meltronicsgroup/wp-content/uploads
  
 //Required for theme & plugin install via wordpress controlpanel
- sudo chmod -R 777 /home/www/html/meltronicsgroup/wp-content/upgrade
- sudo chmod -R 777 /home/www/html/meltronicsgroup/wp-content/uploads
- sudo chmod -R 777 /home/www/html/meltronicsgroup/wp-content/themes 
- sudo chown apache:apache /home/www/html/meltronicsgroup/wp-content/themes 
- sudo chown apache:apache /home/www/html/meltronicsgroup/wp-content/uploads
- sudo chown apache:apache /home/www/html/meltronicsgroup/wp-content/upgrade
+ sudo chmod -R 777 /home/www/html/wordpress/wp-content/upgrade
+ sudo chmod -R 777 /home/www/html/wordpress/wp-content/uploads
+ sudo chmod -R 777 /home/www/html/wordpress/wp-content/themes      
+ sudo chown apache:apache /home/www/html/wordpress/wp-content/themes      
+ sudo chown apache:apache /home/www/html/wordpress/wp-content/uploads
+ sudo chown apache:apache /home/www/html/wordpress/wp-content/upgrade
+
 
 #Permissions and SELinux Configuration
 #semanage fcontext -a -t httpd_sys_content_t "/home/www/html(/.*)?"//to add a file context of type httpd_sys_content_t for everything under /home/www/html.  
@@ -59,6 +61,11 @@
 #sudo chcon -h -t httpd_sys_script_exec_t /home/www/cgi-bin
 #sudo setsebool -P httpd_can_network_relay 1
 #sudo setsebool -P allow_ypbind 1
+#If you want to allow httpd to have write access on the .htaccess file
+#Then you need to change the label on '/home/www/html/wordpress/.htaccess'
+#Do
+sudo semanage fcontext -a -t httpd_sys_rw_content_t '/home/www/html/wordpress/.htaccess'
+sudo restorecon -v '/home/www/html/wordpress/.htaccess'
 #SELinux enable write to .htaccess by httpd process
 sudo emanage fcontext -a -t httpd_sys_rw_content_t '.htaccess'
 sudo restorecon -v '.htaccess'
