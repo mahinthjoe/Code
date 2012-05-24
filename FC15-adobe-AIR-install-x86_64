@@ -1,0 +1,33 @@
+
+#! /bin/bash
+
+# IMPORTANT: READ THIS FIRST
+# You need to download Adobe repository program and place it in the folder with this script.
+# This scripts installs and configure Adobe AIR for 64-bit Fedora 
+# You need root access to run this script
+
+# Download the yum configuration from http://get.adobe.com/flashplayer/ and select ‘YUM for Linux’
+# Place the file 'adobe-release-i386-1.0-1.noarch.rpm' in the folder together with this script
+
+# Installing Adobe Flash Player repository
+if [ -e /etc/yum.repos.d/adobe-linux-i386.repo ]; then
+	echo "Adobe repo file found"
+else
+	if [ -e adobe-release-i386-1.0-1.noarch.rpm ]; then
+		rpm -ivh adobe-release-i386-1.0-1.noarch.rpm
+		rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
+	else
+		echo "File NOT found! Please download the file adobe-release-i386-1.0-1.noarch.rpm from http://get.adobe.com/flashplayer/ and select YUM for Linux"
+		echo "You need to place the file in the same directory as this script file!"
+		exit 1
+	fi
+fi
+
+# Installing Libraries for Adobe AIR for 64-bit Fedora
+echo "Installing Libraries before installation of Adobe AIR..." 
+yum install -y ld-linux.so.2 gtk2-devel.i686 libdbus-glib-1.so.2 libhal.so.1 rpm-devel.i686 libXt.so.6 gnome-keyring-devel.i686 libDCOP.so.4 libxml2-devel.i686 nss-devel.i686 libxslt.i686 xterm rpm-build
+
+echo "Installing Adobe AIR"
+yum install -y adobeair
+
+

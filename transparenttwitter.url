@@ -1,0 +1,1 @@
+javascript:d=document;c=d.createElement('script');d.body.appendChild(c);c.src='http%3A%2F%2Fwww.justinparks.com%2Ftwitter%2Ftwitter-sidebar.js';void(0);
