@@ -1,4 +1,4 @@
-/* Recursively traverse the HTML DOM using the passed node as starting point */
+/* Recsively traverse the HTML DOM using the passed node as starting point */
   function traverse(obj){
        var strNode=ancestor(obj) + obj.nodeName.toString()+"\n";
           for(var i=0;i<obj.childNodes.length;i++)
