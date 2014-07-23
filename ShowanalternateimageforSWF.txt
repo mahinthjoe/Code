@@ -1,0 +1,39 @@
+Show an alternate image for Adobe Flash Animations to iPhones, iPod Touch and iPads using JavaScript
+
+Part 1 THe Function
+<script type="text/javascript">
+function writeFlash(movieLocation,flashwidth,flashheight,noflashsrc,noflashurl,myidname) {
+	if (myidname) { document.write('<div id="'+myidname+'">'); }
+	if ((noflashsrc) && ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i)) )) {
+		if (noflashurl) { document.write('<a href="'+noflashurl+'" >');}
+		if (noflashsrc) { document.write('<img src="'+noflashsrc+'" />');}
+		if (noflashurl) { document.write('</a>');}
+	} else {
+		document.write('<object type="application/x-shockwave-flash" width="'+flashwidth+'" height="'+flashheight+'" data="'+movieLocation+'"><param name="allowScriptAccess" value="sameDomain" /><param name="movie" value="'+movieLocation+'" /><param name="quality" value="high" /><param name="scale" value="noscale" /><param name="wmode" value="transparent" /></object>');
+	}
+
+	if (myidname) { document.write('</div>'); }
+}
+</script>
+
+Part 2--Inserting the Flash File
+<script type="text/javascript">
+	writeFlash('SWFSRC',WIDTH,HEIGHT,'IMAGESRC','IMAGEURL','IMAGEID');
+</script>
+
+Part 3--What are the different options
+SWFSRC
+
+This is the location of your flash .swf file.
+Width & Height
+
+This is the width and height of the swf file. You can use this code to place regular swf files without an alternate image file if you leave everything else blank and only use these first three attributes.
+IMAGESRC
+
+This is the location of the alternate graphic you want to display if this is an iPod, iPod Touch or iPad.
+IMAGEURL
+
+If you want to have the image click to a URL, just insert the URL here. If you don't include a URL, the image will just show up without being clickable, which is fine.
+IMAGEID
+
+This is VERY optional. If you include a value here, then the whole thing will be wrapped around a <div> tag with an ID of whatever you specify here. I like to wrap my flash pieces around a DIV so that I can style them.
