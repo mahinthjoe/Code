@@ -1,4 +1,7 @@
-# JavaScript looped 100000000 times in 0.135 seconds in node v16.13.2
+/*
+ * JavaScript looped 100000000 times in 0.135 seconds in node v16.13.2
+ * JavaScript looped 100000000 times in 0.048 seconds in node v10.24.1 windows wsl
+*/
 function main() {
   const cycles = 100000000;
   let start = Date.now();

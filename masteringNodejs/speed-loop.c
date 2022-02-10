@@ -1,4 +1,7 @@
-# C looped 1000000000 times in 2.576541 second on osx
+/* 
+ * C looped 1000000000 times in 2.576541 second on osx 
+ * C looped 1000000000 times in 1.660506 seconds on Windows WSL
+*/
 #include <stdio.h>
 #include <time.h>
 int main () {

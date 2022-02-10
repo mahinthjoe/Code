@@ -1,4 +1,5 @@
 # Python looped 1000000000 times in 34.590 seconds on osx
+# Python looped 1000000000 times in 14.373 seconds on Windows wsl
 import time
 
 def main() :
