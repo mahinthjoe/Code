@@ -31,7 +31,8 @@ lsmod | grep nouveau
 
 # Installing NVIDIA VAAPI/VDPAU Drivers on Fedora [Optional]
 sudo dnf -y install nvidia-vaapi-driver libva-utils vdpauinfo
-
+# Check is UEFI Secure Boot Enabled or Disabled
+mokutil --sb-state
 # Verify You Have a Supported Version of Linux
 uname -m && cat /etc/*release # You should see output similar to the following, modified for your particular system:x86_64
 # Verify You Have a CUDA-Capable GPU
