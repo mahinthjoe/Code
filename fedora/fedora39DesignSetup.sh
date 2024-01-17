@@ -4,7 +4,7 @@ sudo gnome-text-editor /etc/dnf/dnf.conf
 	max_parallel_downloads=10
 	fastestmirror=True
 sudo dnf -y update && sudo dnf -y upgrade
-# Restart because above command will change the currently running kernel module from 6.5.6-300.fc39.x86_64 to
+# Restart because above command will change the currently running kernel module from 6.5.6-300.fc39.x86_64 to 6.6.11-200.fc39.x86_64 after Restart
 # Check is UEFI Secure Boot Enabled or Disabled
 mokutil --sb-state # Should output SecureBoot enabled
 # Verify You Have a Supported Version of Linux
