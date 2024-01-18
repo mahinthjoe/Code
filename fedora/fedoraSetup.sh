@@ -54,6 +54,7 @@ nvm use --lts
 sudo dnf -y install snapd # Installing snap on Fedora  
 sudo ln -s /var/lib/snapd/snap /snap # To enable classic snap support,
 sudo snap install hello-world
+sudo snap install co-pilot-cli --edge --devmode
 sudo snap install --classic code # or code-insiders #Visual Studio Code
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
