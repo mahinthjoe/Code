@@ -28,7 +28,7 @@ sudo dnf -y module install nvidia-driver:open-dkms
 # Restart and ensure 
 # Nouveau drivers are notloaded
 lsmod | grep nouveau
-
+# Install NVIDIA drivers from https://blog.monosoul.dev/2022/05/17/automatically-sign-nvidia-kernel-module-in-fedora-36/
 # Installing NVIDIA VAAPI/VDPAU Drivers on Fedora [Optional]
 sudo dnf -y install nvidia-vaapi-driver libva-utils vdpauinfo
 # Check is UEFI Secure Boot Enabled or Disabled
