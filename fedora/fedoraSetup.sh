@@ -1,4 +1,4 @@
-# Install Video DownloadHelper Plugin for Firefox
+# DownloadHelper Plugin for Firefox
 cd ~/Downloads
 wget https://github.com/aclap-dev/vdhcoapp/releases/download/v2.0.10/vdhcoapp-2.0.10-linux-x86_64.tar.bz2
 tar xf vdhcoapp-2.0.10-linux-x86_64.tar.bz2 -C ~
@@ -109,15 +109,9 @@ sudo dnf install dnf5 dnf5-plugins
 sudo fwupdmgr refresh --force
 sudo fwupdmgr get-updates
 sudo fwupdmgr update
-sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf upgrade --refresh
-sudo dnf groupupdate core
-sudo dnf install gnome-tweak-tool
+# Install Flatpack from https://flathub.org/apps/org.gnome.Extensions
 flatpak remote-modify --enable flathub
-flatpak install flathub com.mattjakeman.ExtensionManager
 sudo dnf install -y vlc
-sudo dnf install -y steam
 sudo dnf install -y transmission
 sudo dnf install -y geary
 sudo dnf install -y dropbox nautilus-dropbox
@@ -131,3 +125,7 @@ sudo firewall-cmd --reload
 sudo systemctl restart httpd
 
 
+# Download Installer for Linux Fedora 37 x86_64
+sudo dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/fedora37/x86_64/cuda-fedora37.repo
+sudo dnf clean all
+sudo dnf -y install cuda-toolkit-12-3
