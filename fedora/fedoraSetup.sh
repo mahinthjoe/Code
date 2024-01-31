@@ -124,6 +124,12 @@ sudo firewall-cmd --reload
 # Restart Apache 
 sudo systemctl restart httpd
 
+# Install  Brave on Fedora, Rocky/RHEL
+sudo dnf install dnf-plugins-core
+sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+sudo dnf install brave-browser
+
 
 # Download Installer for Linux Fedora 37 x86_64
 sudo dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/fedora37/x86_64/cuda-fedora37.repo
