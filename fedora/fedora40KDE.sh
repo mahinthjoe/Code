@@ -26,8 +26,8 @@ sudo dnf -y install kernel-devel kernel-headers gcc make dkms acpid libglvnd-glx
 sudo dnf -y install cmake
 
 # Download Nvidia Driver for your Card
-wget https://in.download.nvidia.com/XFree86/Linux-x86_64/535.154.05/NVIDIA-Linux-x86_64-535.154.05.run
-chmod a+x ./NVIDIA-Linux-x86_64-535.154.05.run 
+wget https://in.download.nvidia.com/XFree86/Linux-x86_64/545.29.06/NVIDIA-Linux-x86_64-545.29.06.run
+chmod a+x ./NVIDIA-Linux-x86_64-545.29.06.run 
 # Preparing the Public/Private Keys
 cd $home 
 mkdir -p bin/drivers && cd bin/drivers
