@@ -31,6 +31,9 @@ chmod a+x ./NVIDIA-Linux-x86_64-545.29.06.run
 # Download CUDA Drivers for linux
 wget https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda_12.4.1_550.54.15_linux.run
 sudo sh cuda_12.4.1_550.54.15_linux.run
+# To install the open kernel module flavor:
+sudo dnf -y module install nvidia-driver:open-dkms
+
 # Preparing the Public/Private Keys
 cd $home 
 mkdir -p bin/drivers && cd bin/drivers
