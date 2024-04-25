@@ -13,6 +13,8 @@ uname -m && cat /etc/*release # You should see output similar te x86_64
 lspci | grep -i nvidia # Ouput depending upon your Configuration
 #04:00.0 VGA compatible controller: NVIDIA Corporation GAXXX [GeForce RTX XXXX Lite Hash Rate] (rev a1)
 #04:00.1 Audio device: NVIDIA Corporation GAXXX High Definition Audio Controller (rev a1)
+#Detect Display Driver
+loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}'
 # Verify System has gcc installed
 gcc --version # If Output bash: gcc: command not found...  install in below in Fedora
 sudo dnf -y group install "C Development Tools and Libraries" "Development Tools"
