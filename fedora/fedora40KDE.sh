@@ -61,7 +61,7 @@ dracut /boot/initramfs-$(uname -r).img $(uname -r)
 systemctl set-default multi-user.target
 
 # After reboot in a multi-user.target mode, we can install NVIDIA Driver
-sudo ./NVIDIA-Linux-x86_64-535.154.05.run 
+sudo ./NVIDIA-Linux-x86_64-545.29.06.run  
 --module-signing-secret-key=/home/$USER/bin/drivers/Nvidia.key 
 --module-signing-public-key=/home/$USER/bin/drivers/Nvidia.der
 
