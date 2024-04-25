@@ -49,15 +49,15 @@ echo -e "blacklist nouveau\noptions nouveau modeset=0" | sudo tee /etc/modprobe.
 GRUB_CMDLINE_LINUX="rhgb quiet rd.driver.blacklist=nouveau nvidia-drm.modeset=1"
 
 ## Update grub2
-grub2-mkconfig -o /boot/grub2/grub.cfg
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ## remove old package
 dnf -y remove xorg-x11-drv-nouveau
 
 ## Backup old initramfs nouveau image 
-mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r)-nouveau.img
+sudo mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r)-nouveau.img
 ## Create new initramfs image ##
-dracut /boot/initramfs-$(uname -r).img $(uname -r)
+sudo dracut /boot/initramfs-$(uname -r).img $(uname -r)
 systemctl set-default multi-user.target
 
 # After reboot in a multi-user.target mode, we can install NVIDIA Driver
