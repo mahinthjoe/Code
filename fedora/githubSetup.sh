@@ -1,7 +1,7 @@
 #generate ssh public key for github
   ssh-keygen -t rsa -C "mahinthjoe@gmail.com"
 #github install
-  sudo yum -y install git-core git-gui git-doc //git install
+  sudo dnf -y install git-core git-gui  //git install
 #Github.com Configuration
   git config --global user.name "Mahinth Christensen"
   git config --global user.email "mahinthjoe@gmail.com"
