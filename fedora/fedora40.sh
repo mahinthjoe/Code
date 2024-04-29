@@ -16,7 +16,7 @@ lspci | grep -i nvidia # Ouput depending upon your Configuration
 #Detect Display Driver
 loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}'
 # Verify System has gcc installed
-gcc --version # If Output bash: gcc: command not found...  install in below in Fedora
+gcc --version # If Output bash: gcc: command not found...  install below in Fedora
 sudo dnf -y group install "C Development Tools and Libraries" "Development Tools"
 # kernel development tools and kernel headers 
 sudo dnf -y install kernel-devel kernel-headers gcc make dkms acpid libglvnd-glx libglvnd-opengl libglvnd-devel pkgconfig
@@ -28,6 +28,8 @@ sudo dnf -y install cmake
 # Download Nvidia Driver for your Card
 wget https://in.download.nvidia.com/XFree86/Linux-x86_64/535.154.05/NVIDIA-Linux-x86_64-535.154.05.run
 chmod a+x ./NVIDIA-Linux-x86_64-535.154.05.run 
+# Install openssl in Fedora
+sudo dnf install openssl
 # Preparing the Public/Private Keys
 cd $home 
 mkdir -p bin/drivers && cd bin/drivers
