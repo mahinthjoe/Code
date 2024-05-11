@@ -26,8 +26,8 @@ sudo dnf -y install kernel-devel kernel-headers gcc make dkms acpid libglvnd-glx
 sudo dnf -y install cmake
 
 # Download Nvidia Driver for your Card
-wget https://in.download.nvidia.com/XFree86/Linux-x86_64/535.154.05/NVIDIA-Linux-x86_64-535.154.05.run
-chmod a+x ./NVIDIA-Linux-x86_64-535.154.05.run 
+wget https://us.download.nvidia.com/XFree86/Linux-x86_64/550.78/NVIDIA-Linux-x86_64-550.78.run
+chmod a+x ./NVIDIA-Linux-x86_64-550.78.run 
 
 ## Download and install CUDA rpm for Fedora 39
 wget https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda-repo-fedora39-12-4-local-12.4.1_550.54.15-1.x86_64.rpm
